@@ -15,3 +15,7 @@ export type Post = {
   image_url: string | null;
   created_at: string;
 };
+
+export type PostWithUser = Post & {
+  user: Pick<User, 'name' | 'profile_pic'>;
+};

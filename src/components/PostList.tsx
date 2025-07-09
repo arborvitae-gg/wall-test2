@@ -1,8 +1,8 @@
-import { getPosts } from '@/lib/supabaseHelpers';
+import { getPostsWithUser } from '@/lib/supabaseHelpers';
 import PostCard from './PostCard';
 
 export default async function PostList() {
-  const posts = await getPosts();
+  const posts = await getPostsWithUser();
 
   return (
     <div>
