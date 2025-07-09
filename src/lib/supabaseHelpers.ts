@@ -2,7 +2,7 @@ import { supabase } from '@/lib/supabase';
 import { Post, User } from '@/lib/types';
 
 
-// there is only one user in the database so its just here to get that user
+// there is only a single user in the database so its just here to get that user
 export const getSingleUser = async (): Promise<User | null> => {
   const { data, error } = await supabase
     .from('users')
@@ -48,7 +48,7 @@ export const getPosts = async (): Promise<Post[]> => {
   const { data, error } = await supabase
     .from('posts')
     .select('*')
-    .order('created_at', { ascending: false });
+    // .order('created_at', { ascending: false });
 
   return error ? [] : data;
 };
