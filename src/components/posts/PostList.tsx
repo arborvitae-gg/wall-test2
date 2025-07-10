@@ -1,8 +1,6 @@
 import { getPostsWithUser } from '@/lib/supabaseHelpers';
 import PostCard from './PostCard';
 
-export const dynamic = 'force-dynamic';
-
 export default async function PostList() {
   const posts = await getPostsWithUser();
   
