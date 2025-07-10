@@ -132,7 +132,7 @@ export default function EditProfileModal({
             </h2>
             <button 
               onClick={onClose}
-              className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-gray-600 cursor-pointer"
+              className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-[var(--facebook-hover)] cursor-pointer"
             >
               <X className="w-5 h-5 text-[var(--facebook-text)]" />
             </button>
@@ -166,8 +166,8 @@ export default function EditProfileModal({
                       </div>
                     )}
                   </div>
-                  <label className="absolute bottom-0 right-0 w-8 h-8 bg-(--facebook-white) rounded-full border-1 border-(--facebook-border) flex items-center justify-center cursor-pointer facebook-hover">
-                    <Camera className="w-4 h-4"/>
+                  <label className="absolute bottom-0 right-0 w-8 h-8 rounded-full border-1 border-(--facebook-border) flex items-center justify-center cursor-pointer hover:bg-[var(--facebook-hover)]">
+                    <Camera className="w-4 h-4 text-[var(--facebook-text)]"/>
                     <input
                       type="file"
                       accept="image/*"
@@ -240,9 +240,9 @@ export default function EditProfileModal({
                       <button
                         type="button"
                         onClick={() => removeNetwork(index)}
-                        className="w-8 h-8 rounded-full flex items-center justify-center facebook-hover cursor-pointer"
+                        className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-[var(--facebook-hover)] cursor-pointer"
                       >
-                        <X className="w-4 h-4" />
+                        <X className="w-4 h-4 text-[var(--facebook-text)]" />
                       </button>
                     </div>
                   ))}
@@ -270,10 +270,11 @@ export default function EditProfileModal({
               type="button"
               onClick={onClose}
               disabled={isSubmitting}
-              className="px-4 py-2 text-sm font-medium rounded-md facebook-hover cursor-pointer"
+              className="px-4 py-2 text-sm font-medium rounded-md hover:bg-[var(--facebook-hover)] text-[var(--facebook-text)] cursor-pointer"
             >
               Cancel
             </button>
+            
             <button
               type="submit"
               onClick={handleSubmit}
