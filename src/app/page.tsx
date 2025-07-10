@@ -7,6 +7,8 @@ import PostListSkeleton from '@/components/posts/PostListSkeleton';
 import ProfileCard from '@/components/profile/ProfileCard';
 import ProfileCardSkeleton from '@/components/profile/ProfileCardSkeleton';
 
+export const revalidate = 0; // disables ISR
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-[var(--facebook-gray)]">
