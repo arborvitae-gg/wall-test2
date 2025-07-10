@@ -132,9 +132,9 @@ export default function EditProfileModal({
             </h2>
             <button 
               onClick={onClose}
-              className="w-9 h-9 rounded-full text-[var(--facebook-text)] flex items-center justify-center facebook-hover cursor-pointer"
+              className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-gray-600 cursor-pointer"
             >
-              <X className="w-5 h-5" />
+              <X className="w-5 h-5 text-[var(--facebook-text)]" />
             </button>
           </div>
           
