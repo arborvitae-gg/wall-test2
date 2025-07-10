@@ -85,7 +85,7 @@ export default function PostCard({ post }: PostCardProps) {
           {/* Loading skeleton */}
           {imageLoading && (
             <div className="absolute inset-0 bg-[var(--facebook-gray-dark)] animate-pulse">
-              <div className="w-full h-80 bg-[var(--facebook-gray-dark)]" />
+              <div className="bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
             </div>
           )}
           
