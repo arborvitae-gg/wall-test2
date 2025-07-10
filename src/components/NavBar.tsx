@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Sun, Moon } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Navbar() {
   const [isDark, setIsDark] = useState(false);
@@ -34,7 +35,11 @@ export default function Navbar() {
           {/* Left Section - Logo and Search */}
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2">
-              <h1 className="text-2xl font-bold text-white">Wall</h1>
+              <Link 
+              href="/" 
+              className="text-2xl font-bold text-white">
+                Wall
+              </Link>
             </div>
             
           </div>
@@ -43,7 +48,7 @@ export default function Navbar() {
           <div className="flex items-center space-x-2">
             <button
               onClick={toggleDarkMode}
-              className="facebook-hover p-2 rounded-lg transition-colors"
+              className="p-2 rounded-lg transition-colors cursor-pointer"
               aria-label="Toggle dark mode"
             >
               {isDark ? (
