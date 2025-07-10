@@ -1,22 +1,44 @@
-import PostForm from '@/components/PostForm';
-import PostList from '@/components/PostList';
-// import { getSingleUser } from '@/lib/supabaseHelpers';
+import { Suspense } from 'react';
 
-export default async function Home() {
-  // const user = await getSingleUser();
+import PostForm from '@/components/posts/PostForm';
+import PostList from '@/components/posts/PostList';
+import PostListSkeleton from '@/components/posts/PostListSkeleton';
 
+import ProfileCard from '@/components/profile/ProfileCard';
+import ProfileCardSkeleton from '@/components/profile/ProfileCardSkeleton';
+
+export default function Home() {
   return (
-    <main className="max-w-2xl mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold mb-8 text-center">Message Board</h1>
+    <div className="min-h-screen bg-[var(--facebook-gray)]">
       
-      <div className="mb-10">
-        <PostForm />
+      <div className="max-w-6xl mx-auto px-4 py-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          {/* Left Sidebar - Profile Card */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-20">
+              <Suspense fallback={<ProfileCardSkeleton />}>
+                <ProfileCard />
+              </Suspense>
+            </div>
+          </div>
+          
+          {/* Main Content Area */}
+          <div className="lg:col-span-2 space-y-6 m-1.5">
+            {/* Post Creation Form */}
+            <div className="facebook-card p-4">
+              <PostForm />
+            </div>
+            
+            {/* Posts Feed */}
+            <div className="space-y-4">
+              <Suspense fallback={<PostListSkeleton />}>
+                <PostList />
+              </Suspense>
+            </div>
+          </div>
+        </div>
       </div>
-      
-      <div>
-        <h2 className="text-xl font-semibold mb-4">Timeline</h2>
-        <PostList />
-      </div>
-    </main>
+    </div>
   );
 }
