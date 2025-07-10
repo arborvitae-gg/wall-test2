@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { User } from '@/lib/types';
-import { Edit3 } from 'lucide-react';
 
 import EditProfileModal from './EditProfileModal';
 

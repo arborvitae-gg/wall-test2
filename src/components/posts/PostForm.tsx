@@ -4,7 +4,6 @@ import { useState, ChangeEvent, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { uploadImage, createPost } from '@/lib/supabaseHelpers';
 import ImageUpload, { ImageUploadHandle } from './ImageUpload';
-import { Camera, MapPin, Users, Smile } from 'lucide-react';
 
 export default function PostForm() {
   const router = useRouter();
@@ -124,7 +123,7 @@ export default function PostForm() {
           <button 
             type="submit"
             disabled={isSubmitting || (!body.trim() && !image) || isAtLimit}
-            className="facebook-button text-xs px-4 py-2 min-w-[80px]"
+            className="facebook-button text-base px-4 py-2 min-w-[80px]"
           >
             {isSubmitting ? 'Posting...' : 'Share'}
           </button>

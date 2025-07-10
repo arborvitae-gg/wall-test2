@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
+import { Camera, X } from 'lucide-react';
 import { useState, useRef, useCallback, ChangeEvent, forwardRef, useImperativeHandle } from 'react';
-import { Camera, X, ImageIcon } from 'lucide-react';
 
 export type ImageUploadHandle = {
   reset: () => void;

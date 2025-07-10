@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { formatDistanceToNow } from 'date-fns';
-import { MoreHorizontal, ThumbsUp, MessageCircle, Share2 } from 'lucide-react';
 
 type PostCardProps = {
   post: {
@@ -63,7 +62,7 @@ export default function PostCard({ post }: PostCardProps) {
 
       {/* Post Content */}
       <div className="m-4">
-        <p className="text-sm text-[var(--facebook-text)] break-words whitespace-pre-wrap">
+        <p className="text-base text-[var(--facebook-text)] break-words whitespace-pre-wrap">
           {post.body}
         </p>
       </div>

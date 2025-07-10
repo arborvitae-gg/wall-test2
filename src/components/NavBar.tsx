@@ -1,11 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Sun, Moon, Search, Home, Users, MessageCircle, Bell, Settings } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
 
 export default function Navbar() {
   const [isDark, setIsDark] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
