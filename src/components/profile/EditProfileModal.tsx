@@ -265,16 +265,12 @@ export default function EditProfileModal({
           </div>
           
           {/* Footer */}
-          <div className="flex justify-end space-x-2 p-4 border-t" style={{ borderColor: 'var(--facebook-border)' }}>
+          <div className="flex justify-end space-x-2 p-4">
             <button
               type="button"
               onClick={onClose}
               disabled={isSubmitting}
-              className="px-4 py-2 text-sm font-medium rounded-md facebook-hover"
-              style={{ 
-                color: 'var(--facebook-text)',
-                backgroundColor: 'var(--facebook-gray-dark)'
-              }}
+              className="px-4 py-2 text-sm font-medium rounded-md facebook-hover cursor-pointer"
             >
               Cancel
             </button>
