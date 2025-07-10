@@ -24,7 +24,7 @@ export default function Home() {
           </div>
           
           {/* Main Content Area */}
-          <div className="lg:col-span-2 space-y-6 m-2">
+          <div className="lg:col-span-2 space-y-6">
             {/* Post Creation Form */}
             <div className="facebook-card p-4">
               <PostForm />
