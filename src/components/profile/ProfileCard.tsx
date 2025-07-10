@@ -2,6 +2,8 @@ import Image from 'next/image';
 import EditProfileButton from './EditProfileButton';
 import { getSingleUser } from '@/lib/supabaseHelpers';
 
+export const dynamic = 'force-dynamic';
+
 export default async function ProfileCard() {
   const user = await getSingleUser();
 
