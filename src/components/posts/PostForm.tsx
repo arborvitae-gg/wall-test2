@@ -60,6 +60,7 @@ export default function PostForm() {
         throw new Error('Failed to create post');
       }
 
+      router.refresh();
       setBody('');
       setImage(null);
       imageUploadRef.current?.reset();

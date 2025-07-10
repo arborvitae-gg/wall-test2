@@ -14,6 +14,10 @@ export type Post = {
   body: string;
   image_url: string | null;
   created_at: string;
+  user: {
+        name: string | null;
+        profile_pic: string | null;
+  };
 };
 
 export type PostWithUser = Post & {

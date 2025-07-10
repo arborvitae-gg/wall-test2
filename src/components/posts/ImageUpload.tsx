@@ -24,6 +24,8 @@ const ImageUpload = forwardRef<ImageUploadHandle, ImageUploadProps>(({
   const [previewUrl, setPreviewUrl] = useState<string | null>(initialImage || null);
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [imageLoading, setImageLoading] = useState(false);
+  const [imageExpanded, setImageExpanded] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Expose functions to parent
@@ -31,6 +33,8 @@ const ImageUpload = forwardRef<ImageUploadHandle, ImageUploadProps>(({
     reset: () => {
       setPreviewUrl(null);
       setError(null);
+      setImageLoading(false);
+      setImageExpanded(false);
       onImageChange(null);
       if (fileInputRef.current) {
         fileInputRef.current.value = '';
@@ -54,6 +58,7 @@ const ImageUpload = forwardRef<ImageUploadHandle, ImageUploadProps>(({
         return;
       }
       
+      setImageLoading(true);
       const url = URL.createObjectURL(file);
       setPreviewUrl(url);
       onImageChange(file);
@@ -94,10 +99,28 @@ const ImageUpload = forwardRef<ImageUploadHandle, ImageUploadProps>(({
     }
     setPreviewUrl(null);
     setError(null);
+    setImageLoading(false);
+    setImageExpanded(false);
     onImageChange(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
+  };
+
+  const handleImageClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!imageLoading) {
+      setImageExpanded(!imageExpanded);
+    }
+  };
+
+  const handleImageLoad = () => {
+    setImageLoading(false);
+  };
+
+  const handleImageError = () => {
+    setImageLoading(false);
+    setError('Failed to load image');
   };
 
   return (
@@ -121,25 +144,61 @@ const ImageUpload = forwardRef<ImageUploadHandle, ImageUploadProps>(({
           className="hidden"
         />
         
-        <div className="w-full h-max-64">
+        <div className="w-full">
           {previewUrl ? (
-          <div className="relative">
-            <Image
-              src={previewUrl}
-              alt="Preview"
-              width={800}
-              height={800}
-              className="w-full h-64 rounded-lg object-cover"
-            />
-            <button
-              type="button"
-              onClick={removeImage}
-              className="absolute top-3 right-2 p-1 bg-black/50 hover:bg-black/70 rounded-full transition-colors"
-              aria-label="Remove image"
-            >
-              <X className="w-4 h-4 text-white" />
-            </button>
-          </div>
+            <div className="relative">
+              {/* Loading skeleton */}
+              {imageLoading && (
+                <div className="absolute inset-0 bg-[var(--facebook-gray-dark)] animate-pulse rounded-lg z-10">
+                  <div className="w-full h-64 bg-[var(--facebook-gray-dark)] rounded-lg flex items-center justify-center">
+                    <div className="w-8 h-8 border-2 border-[var(--facebook-blue)] border-t-transparent rounded-full animate-spin"></div>
+                  </div>
+                </div>
+              )}
+              
+              {/* Image container with expansion */}
+              <div 
+                className={`relative transition-all duration-300 ${
+                  imageExpanded ? 'max-h-none' : 'max-h-64'
+                } overflow-hidden`}
+                onClick={handleImageClick}
+              >
+                <Image
+                  src={previewUrl}
+                  alt="Preview"
+                  width={800}
+                  height={imageExpanded ? 1000 : 800}
+                  className={`w-full rounded-lg transition-all duration-300 ${
+                    imageExpanded 
+                      ? 'object-contain cursor-pointer' 
+                      : 'h-64 object-cover cursor-pointer'
+                  } ${imageLoading ? 'opacity-0' : 'opacity-100'}`}
+                  onLoad={handleImageLoad}
+                  onError={handleImageError}
+                  priority={false}
+                />
+                
+                {/* Expand/Collapse indicator */}
+                {!imageLoading && (
+                  <div className="absolute bottom-2 left-2 bg-black/50 text-white px-2 py-1 rounded text-xs pointer-events-none">
+                    {imageExpanded ? 'Click to collapse' : 'Click to expand'}
+                  </div>
+                )}
+              </div>
+              
+              {/* Remove button */}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  removeImage();
+                }}
+                className="absolute top-3 right-2 p-1 bg-black/50 hover:bg-black/70 rounded-full transition-colors z-20"
+                aria-label="Remove image"
+              >
+                <X className="w-4 h-4 text-white" />
+              </button>
+            </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-8 px-4">
               <div className="w-12 h-12 flex items-center justify-center bg-[var(--facebook-blue)]/10 rounded-full mb-3">
@@ -157,7 +216,6 @@ const ImageUpload = forwardRef<ImageUploadHandle, ImageUploadProps>(({
             </div>
           )}
         </div>
-
       </div>
       
       {error && (

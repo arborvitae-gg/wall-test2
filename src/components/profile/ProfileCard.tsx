@@ -5,6 +5,16 @@ import { getSingleUser } from '@/lib/supabaseHelpers';
 export default async function ProfileCard() {
   const user = await getSingleUser();
 
+  if (!user) {
+    return (
+      <div className="facebook-card overflow-hidden">
+        <div className="p-4 text-center text-[var(--facebook-text-secondary)]">
+          Could not load user profile.
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="facebook-card overflow-hidden">
       <div className="flex flex-col">
