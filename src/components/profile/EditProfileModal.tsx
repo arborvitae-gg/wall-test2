@@ -165,7 +165,7 @@ export default function EditProfileModal({
                       </div>
                     )}
                   </div>
-                  <label className="absolute bottom-0 right-0 w-8 h-8 rounded-full border-1 bg-[var(--facebook-white)]/10 flex items-center justify-center cursor-pointer hover:bg-[var(--facebook-hover)]">
+                  <label className="absolute bottom-0 right-0 w-8 h-8 rounded-full border-1 bg-[var(--facebook-white)] flex items-center justify-center cursor-pointer hover:bg-[var(--facebook-hover)]">
                     <Camera className="w-4 h-4 text-[var(--facebook-text)]"/>
                     <input
                       type="file"
