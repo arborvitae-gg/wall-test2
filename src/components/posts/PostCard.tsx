@@ -49,10 +49,10 @@ export default function PostCard({ post }: PostCardProps) {
           
           {/* User Info */}
           <div className="flex flex-col">
-            <span className="text-base font-semibold text-[var(--facebook-text)] hover:underline cursor-pointer">
+            <span className="text-sm font-semibold text-[var(--facebook-text)] hover:underline cursor-pointer">
               {post.user.name || 'Anonymous'}
             </span>
-            <span className="text-sm text-[var(--facebook-text-secondary)]">
+            <span className="text-xs text-[var(--facebook-text-secondary)]">
               {formatTime(post.created_at)}
             </span>
           </div>
@@ -62,7 +62,7 @@ export default function PostCard({ post }: PostCardProps) {
 
       {/* Post Content */}
       <div className="m-4">
-        <p className="text-base text-[var(--facebook-text)] break-words whitespace-pre-wrap">
+        <p className="text-sm text-[var(--facebook-text)] break-words whitespace-pre-wrap">
           {post.body}
         </p>
       </div>

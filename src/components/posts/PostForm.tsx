@@ -87,7 +87,7 @@ export default function PostForm() {
           value={body}
           onChange={handleTextChange}
           placeholder="What's on your mind?"
-          className="facebook-input resize-none text-base"
+          className="facebook-input resize-none text-sm"
           rows={3}
           disabled={isSubmitting}
         />
@@ -123,7 +123,7 @@ export default function PostForm() {
           <button 
             type="submit"
             disabled={isSubmitting || (!body.trim() && !image) || isAtLimit}
-            className="facebook-button text-base px-4 py-2 min-w-[80px]"
+            className="facebook-button text-sm px-4 py-2 min-w-[80px]"
           >
             {isSubmitting ? 'Posting...' : 'Share'}
           </button>

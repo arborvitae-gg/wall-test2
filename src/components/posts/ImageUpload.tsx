@@ -142,7 +142,7 @@ const ImageUpload = forwardRef<ImageUploadHandle, ImageUploadProps>(({
           </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-8 px-4">
-              <div className="flex items-center justify-center w-12 h-12 bg-[var(--facebook-blue)]/10 rounded-full mb-3">
+              <div className="w-12 h-12 flex items-center justify-center bg-[var(--facebook-blue)]/10 rounded-full mb-3">
                 <Camera className="w-6 h-6 text-[var(--facebook-blue)]" />
               </div>
               <p className="text-sm text-[var(--facebook-text)] font-medium mb-1">

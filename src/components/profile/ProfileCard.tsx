@@ -27,28 +27,31 @@ export default async function ProfileCard() {
         
         {/* Profile Content */}
         <div className="p-4">
-          <EditProfileButton user={user} />
+
+          <div className="absolute right-5 top-84">
+            <EditProfileButton user={user} />
+          </div>
 
           {/* Information Section */}
           <div className="mt-4 space-y-3">
             <div className="border-b border-[var(--facebook-border)] pb-2">
-              <h2 className="text-sm font-semibold text-[var(--facebook-text-secondary)] uppercase tracking-wide">
+              <h2 className="text-base font-semibold text-[var(--facebook-text-secondary)] uppercase tracking-wide">
                 Information
               </h2>
             </div>
             
-            <div className="space-y-2">
+            <div className="space-y-8">
               <div>
-                <h3 className="text-xs font-semibold text-[var(--facebook-text-secondary)] uppercase">
+                <h3 className="text-sm font-semibold text-[var(--facebook-text-secondary)]">
                   Name:
                 </h3>
                 <p className="text-sm text-[var(--facebook-text)] mt-1">
                   {user.name || 'Anonymous'}
                 </p>
               </div>
-
+              
               <div>
-                <h3 className="text-xs font-semibold text-[var(--facebook-text-secondary)] uppercase">
+                <h3 className="text-sm font-semibold text-[var(--facebook-text-secondary)]">
                   Birthday:
                 </h3>
                 <p className="text-sm text-[var(--facebook-text)] mt-1">
@@ -57,7 +60,7 @@ export default async function ProfileCard() {
               </div>
                 
               <div>
-                <h3 className="text-xs font-semibold text-[var(--facebook-text-secondary)] uppercase">
+                <h3 className="text-sm font-semibold text-[var(--facebook-text-secondary)]">
                   Current City:
                 </h3>
                 <p className="text-sm text-[var(--facebook-text)] mt-1">
@@ -67,12 +70,12 @@ export default async function ProfileCard() {
               
               {user.networks && user.networks.length > 0 && (
                 <div>
-                  <h3 className="text-xs font-semibold text-[var(--facebook-text-secondary)] uppercase">
+                  <h3 className="text-sm font-semibold text-[var(--facebook-text-secondary)]">
                     Networks:
                   </h3>
                   <div className="mt-1 space-y-1">
                     {user.networks.map((network, index) => (
-                      <p key={index} className="text-sm text-[var(--facebook-blue)] hover:underline cursor-pointer">
+                      <p key={index} className="text-sm">
                         {network}
                       </p>
                     ))}

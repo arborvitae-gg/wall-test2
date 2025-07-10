@@ -123,19 +123,18 @@ export default function EditProfileModal({
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
         <div 
-          className="facebook-card bg-[var(--facebook-white)] w-full max-w-md max-h-[90vh] overflow-hidden z-50"
+          className="facebook-card facebook-white w-full max-w-md max-h-[90vh] overflow-hidden z-50"
         >
           {/* Header */}
-          <div className="flex justify-between items-center p-4 border-b" style={{ borderColor: 'var(--facebook-border)' }}>
-            <h2 className="text-xl font-bold" style={{ color: 'var(--facebook-text)' }}>
+          <div className="flex justify-between items-center p-4 facebook-border">
+            <h2 className="text-xl font-bold">
               Edit Profile
             </h2>
             <button 
               onClick={onClose}
-              className="w-9 h-9 rounded-full flex items-center justify-center facebook-hover"
-              style={{ backgroundColor: 'var(--facebook-gray-dark)' }}
+              className="w-9 h-9 rounded-full flex items-center justify-center facebook-hover cursor-pointer"
             >
-              <X className="w-5 h-5" style={{ color: 'var(--facebook-text)' }} />
+              <X className="w-5 h-5" />
             </button>
           </div>
           
@@ -145,7 +144,7 @@ export default function EditProfileModal({
               {/* Profile Picture */}
               <div className="flex flex-col items-center space-y-3">
                 <div className="relative">
-                  <div className="w-24 h-24 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--facebook-border)' }}>
+                  <div className="w-24 h-24 rounded-full overflow-hidden facebook-border">
                     {previewImage ? (
                       <img
                         src={previewImage}
@@ -167,8 +166,8 @@ export default function EditProfileModal({
                       </div>
                     )}
                   </div>
-                  <label className="absolute bottom-0 right-0 w-8 h-8 bg-[var(--facebook-white)] rounded-full border-2 flex items-center justify-center cursor-pointer facebook-hover" style={{ borderColor: 'var(--facebook-border)' }}>
-                    <Camera className="w-4 h-4" style={{ color: 'var(--facebook-text)' }} />
+                  <label className="absolute bottom-0 right-0 w-8 h-8 bg-(--facebook-white) rounded-full border-1 border-(--facebook-border) flex items-center justify-center cursor-pointer facebook-hover">
+                    <Camera className="w-4 h-4"/>
                     <input
                       type="file"
                       accept="image/*"
@@ -177,14 +176,11 @@ export default function EditProfileModal({
                     />
                   </label>
                 </div>
-                <span className="text-sm font-medium" style={{ color: 'var(--facebook-blue)' }}>
-                  Change Profile Picture
-                </span>
               </div>
 
               {/* Name */}
               <div>
-                <label className="block text-sm font-medium mb-1" style={{ color: 'var(--facebook-text)' }}>
+                <label className="block text-base font-medium mb-1">
                   Name
                 </label>
                 <input
@@ -199,7 +195,7 @@ export default function EditProfileModal({
 
               {/* Birthday */}
               <div>
-                <label className="block text-sm font-medium mb-1" style={{ color: 'var(--facebook-text)' }}>
+                <label className="block text-base font-medium mb-1" style={{ color: 'var(--facebook-text)' }}>
                   Birthday
                 </label>
                 <input
@@ -213,7 +209,7 @@ export default function EditProfileModal({
               
               {/* City */}
               <div>
-                <label className="block text-sm font-medium mb-1" style={{ color: 'var(--facebook-text)' }}>
+                <label className="block text-base font-medium mb-1" style={{ color: 'var(--facebook-text)' }}>
                   Current City
                 </label>
                 <input
@@ -228,7 +224,7 @@ export default function EditProfileModal({
               
               {/* Networks */}
               <div>
-                <label className="block text-sm font-medium mb-2" style={{ color: 'var(--facebook-text)' }}>
+                <label className="block text-base font-medium mb-2" style={{ color: 'var(--facebook-text)' }}>
                   Networks
                 </label>
                 <div className="space-y-2">
@@ -244,18 +240,16 @@ export default function EditProfileModal({
                       <button
                         type="button"
                         onClick={() => removeNetwork(index)}
-                        className="w-8 h-8 rounded-full flex items-center justify-center facebook-hover"
-                        style={{ backgroundColor: 'var(--facebook-gray-dark)' }}
+                        className="w-8 h-8 rounded-full flex items-center justify-center facebook-hover cursor-pointer"
                       >
-                        <X className="w-4 h-4" style={{ color: 'var(--facebook-text)' }} />
+                        <X className="w-4 h-4" />
                       </button>
                     </div>
                   ))}
                   <button
                     type="button"
                     onClick={addNetwork}
-                    className="text-sm font-medium facebook-hover px-3 py-2 rounded-md"
-                    style={{ color: 'var(--facebook-blue)' }}
+                    className="text-base font-medium mt-2 facebook-button"
                   >
                     + Add Network
                   </button>
@@ -263,7 +257,7 @@ export default function EditProfileModal({
               </div>
               
               {error && (
-                <div className="p-3 rounded-md" style={{ backgroundColor: '#fee', color: '#c53030' }}>
+                <div className="p-3 rounded-md">
                   {error}
                 </div>
               )}
